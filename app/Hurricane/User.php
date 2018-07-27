@@ -10,7 +10,7 @@ use BadChoice\Hurricane\Resource;
 
 class User extends Resource{
 
-    protected $class = \App\User::class;
+    protected $model = \App\User::class;
 
     public static $search = ["name", "email"];
 

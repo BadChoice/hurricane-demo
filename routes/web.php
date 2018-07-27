@@ -12,4 +12,6 @@
 */
 
 Route::get('/', "IndexController@index");
-Route::get('edit/{id}', "IndexController@edit");
+Route::get('{id}/edit', "IndexController@edit");
+Route::get('posts', "IndexController@posts");
+Route::get('posts/{id}/edit', "IndexController@postsEdit");
