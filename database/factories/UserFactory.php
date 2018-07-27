@@ -28,6 +28,8 @@ $factory->define(Post::class,  function (Faker $faker) {
     return [
         'title' => $faker->sentence,
         'body' => $faker->paragraph,
+        'likes' => $faker->randomNumber(3),
+        'price' => $faker->randomNumber(2),
         'user_id' => function(){
             return factory(User::class)->create()->id;
         }

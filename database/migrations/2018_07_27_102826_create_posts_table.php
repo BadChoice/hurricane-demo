@@ -16,6 +16,8 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
+            $table->unsignedInteger('likes');
+            $table->decimal('price', 8,2);
             $table->string('title');
             $table->text('body')->nullable();
             $table->softDeletes();
