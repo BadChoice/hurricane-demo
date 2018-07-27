@@ -3,6 +3,8 @@
 namespace App\Hurricane;
 
 use BadChoice\Hurricane\Fields\BelongsTo;
+use BadChoice\Hurricane\Fields\Date;
+use BadChoice\Hurricane\Fields\Datetime;
 use BadChoice\Hurricane\Fields\Gravatar;
 use BadChoice\Hurricane\Fields\HasMany;
 use BadChoice\Hurricane\Fields\Text;
@@ -18,7 +20,9 @@ class Post extends Resource{
     public function fields() {
         return [
             Text::make('title')->sortable()->validationRules("required"),
-            BelongsTo::make('user')
+            BelongsTo::make('user'),
+            Date::make('created_at')->sortable(),
+            Datetime::make('updated_at')->sortable(),
         ];
     }
 }
