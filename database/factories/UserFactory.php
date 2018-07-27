@@ -30,6 +30,9 @@ $factory->define(Post::class,  function (Faker $faker) {
         'body' => $faker->paragraph,
         'likes' => $faker->randomNumber(3),
         'price' => $faker->randomNumber(2),
+        'color' => '#aabbcc',
+        'link' => $faker->url,
+        'time' => '00:12:35',
         'user_id' => function(){
             return factory(User::class)->create()->id;
         }

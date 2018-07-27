@@ -20,6 +20,9 @@ class CreatePostsTable extends Migration
             $table->decimal('price', 8,2);
             $table->string('title');
             $table->text('body')->nullable();
+            $table->string('color')->nullable();
+            $table->string('link')->nullable();
+            $table->time('time')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
