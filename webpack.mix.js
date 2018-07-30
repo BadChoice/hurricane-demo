@@ -11,5 +11,13 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.less('vendor/badchoice/assets/less/app.less',           'public/css/app.css')
-    .js('resources/assets/js/app.js', 'public/js');
+//mix.js('resources/assets/js/app.js', 'public/js')
+mix.less('vendor/badchoice/hurricane/assets/less/app.less',    'public/css/app.css')
+    .js([
+            'resources/assets/js/app.js',
+            // 'vendor/badchoice/hurricane/assets/js/formVisibility.js',
+            // 'vendor/badchoice/hurricane/assets/js/scrollsaver.min.js',
+            // 'vendor/badchoice/hurricane/assets/js/searcher.js',
+            // 'vendor/badchoice/hurricane/assets/js/select2.min.js',
+        ], 'public/js');
+
