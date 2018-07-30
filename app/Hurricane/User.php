@@ -2,6 +2,7 @@
 
 namespace App\Hurricane;
 
+use BadChoice\Hurricane\Fields\BelongsToMany;
 use BadChoice\Hurricane\Fields\Gravatar;
 use BadChoice\Hurricane\Fields\HasMany;
 use BadChoice\Hurricane\Fields\Text;
@@ -20,6 +21,7 @@ class User extends Resource{
             Text::make('name')->sortable()->validationRules("required"),
             Email::make()->sortable()->validationRules("required"),
             HasMany::make('posts')->withLink(),
+            BelongsToMany::make('roles')->hideInIndex(),
         ];
     }
 }
