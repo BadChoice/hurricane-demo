@@ -1,6 +1,7 @@
-<h1>This is the index!</h1>
+@extends('layout')
 
-<table>
+@section('content')
+<h1>This is the index!</h1>
         {!! \BadChoice\Hurricane\Html\Index::make($resource)->display() !!}
-</table>
+@stop
 
