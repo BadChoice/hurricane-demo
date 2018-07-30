@@ -7,6 +7,7 @@ use BadChoice\Hurricane\Fields\Gravatar;
 use BadChoice\Hurricane\Fields\HasMany;
 use BadChoice\Hurricane\Fields\Text;
 use BadChoice\Hurricane\Fields\Email;
+use BadChoice\Hurricane\Fields\Checkbox;
 use BadChoice\Hurricane\Resource;
 
 class User extends Resource{
@@ -21,7 +22,10 @@ class User extends Resource{
             Text::make('name')->sortable()->validationRules("required"),
             Email::make()->sortable()->validationRules("required"),
             HasMany::make('posts')->withLink(),
-            BelongsToMany::make('roles')->hideInIndex(),
+
+            BelongsToMany::make('roles')->hideInIndex()->canAddDuplicates(false)->withPivotFields([
+                Checkbox::make('active')
+            ]),
         ];
     }
 }
