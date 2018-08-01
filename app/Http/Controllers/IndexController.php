@@ -14,8 +14,9 @@ class IndexController extends Controller
         return view('index', ["resource" => $resource]);
     }
 
-    public function edit($id) {
-        return view('edit', ["resource" => new User, "object" => \App\User::find($id)]);
+    public function edit(ResourceManager $resourceManager, $type, $id) {
+        $resource = $resourceManager->getResource($type);
+        return view('edit', ["resource" => $resource, "object" => $resource->find($id)]);
     }
 
 }
