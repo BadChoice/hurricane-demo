@@ -13,3 +13,4 @@
 
 Route::get('{type}', "IndexController@index");
 Route::get('{type}/{id}/edit', "IndexController@edit");
+Route::get('{type}/{id}/{relation}', "IndexController@relation");

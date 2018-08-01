@@ -19,4 +19,11 @@ class IndexController extends Controller
         return view('edit', ["resource" => $resource, "object" => $resource->find($id)]);
     }
 
+    public function relation(ResourceManager $resourceManager, $type, $id, $relation) {
+        $resource           = $resourceManager->getResource($type);
+        $object             = $resource->find($id);
+        $relationResource   = ($resourceManager->getRelationResource($object, $relation));
+        return view('indexRelation', ["resource" => $resource, "object" => $object, "relationResource" => $relationResource]);
+    }
+
 }
