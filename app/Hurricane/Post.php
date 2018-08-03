@@ -2,13 +2,13 @@
 
 namespace App\Hurricane;
 
-use BadChoice\Hurricane\Fields\BelongsTo;
+use BadChoice\Hurricane\Fields\Relations\BelongsTo;
 use BadChoice\Hurricane\Fields\Color;
 use BadChoice\Hurricane\Fields\Date;
 use BadChoice\Hurricane\Fields\Datetime;
 use BadChoice\Hurricane\Fields\Decimal;
 use BadChoice\Hurricane\Fields\Gravatar;
-use BadChoice\Hurricane\Fields\HasMany;
+use BadChoice\Hurricane\Fields\Relations\HasMany;
 use BadChoice\Hurricane\Fields\Integer;
 use BadChoice\Hurricane\Fields\Text;
 use BadChoice\Hurricane\Fields\Email;

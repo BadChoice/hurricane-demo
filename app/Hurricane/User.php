@@ -2,9 +2,9 @@
 
 namespace App\Hurricane;
 
-use BadChoice\Hurricane\Fields\BelongsToMany;
+use BadChoice\Hurricane\Fields\Relations\BelongsToMany;
 use BadChoice\Hurricane\Fields\Gravatar;
-use BadChoice\Hurricane\Fields\HasMany;
+use BadChoice\Hurricane\Fields\Relations\HasMany;
 use BadChoice\Hurricane\Fields\Select;
 use BadChoice\Hurricane\Fields\Text;
 use BadChoice\Hurricane\Fields\Email;
