@@ -11,6 +11,9 @@ class IndexController extends Controller
 {
     public function index(ResourceManager $resourceManager, $type) {
         $resource = $resourceManager->getResource($type);
+        if (request('contents')){
+            return view('indexContents', ["resource" => $resource]);
+        }
         return view('index', ["resource" => $resource]);
     }
 
