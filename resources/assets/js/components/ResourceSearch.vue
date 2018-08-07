@@ -26,24 +26,26 @@
                 if (search != ""){
                    currentUrl = currentUrl + '&search=' + search;
                 }
-                /*let baseUrl = window.location.hostname + window.location.pathname;
-                let params = this.getParams(window.location.href);
-                let historyUrl = currentUrl.replace("contents=true", "")
-                                           .replace("&search=" + search.substring(0, search.length - 1), "");
-                let newParams = {};
-                for(let k in params){
-                    if(k != 'contents' && k != 'search'){
-                        newParams[k] = params[k];
-                    }
-                }
-                console.log(newParams);
+                this.updateHistoryPage(currentUrl, search);
 
-                history.pushState("", document.title, historyUrl);*/
                 console.log(currentUrl);
                 window.axios.get(currentUrl).then(({ data }) => {
                     document.getElementById("resource-index").innerHTML = data;
                     //console.log(data);
                 });
+            },
+            updateHistoryPage(currentUrl, search){
+               let baseUrl = window.location.pathname + '?';
+               let params = this.getParams(window.location.href);
+               console.log(params);
+               Object.keys(params).filter(function(key){
+                   return key != 'search' && key !='contents' && key != "";
+               }).forEach(function(key){
+                   baseUrl = baseUrl += key + '=' + params[key];
+               });
+               baseUrl += "&search=" + search;
+               console.log("History url: " + baseUrl);
+               history.pushState("", document.title, baseUrl);
             },
             getParams(url) {
                 let params = {};
