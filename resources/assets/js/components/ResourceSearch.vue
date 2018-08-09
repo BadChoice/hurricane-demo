@@ -1,5 +1,5 @@
 <template>
-   <input placeholder="search" type="text" v-model="search" @input="onChange"/>
+   <input placeholder="search" type="text" v-model="search" @input="load"/>
 </template>
 
 <script>
@@ -12,39 +12,39 @@
                 search: '',
             };
         },
-        methods: {
-            onChange() {
-                this.load(this.search);
-            },
-            load(search){
+        computed: {
+            searchUrl : function () {
                 let currentUrl = window.location.href;
                 if (currentUrl.indexOf('?') > -1){
                     currentUrl = currentUrl + "&contents=true";
                 } else {
                     currentUrl = currentUrl + "?contents=true";
                 }
-                if (search != ""){
-                   currentUrl = currentUrl + '&search=' + search;
+                if (this.search != ""){
+                    currentUrl = currentUrl + '&search=' + this.search;
                 }
-                this.updateHistoryPage(currentUrl, search);
-
-                console.log(currentUrl);
-                window.axios.get(currentUrl).then(({ data }) => {
-                    document.getElementById("resource-index").innerHTML = data;
-                    //console.log(data);
+                return currentUrl;
+            }
+        },
+        methods: {
+            load(){
+                console.log(this.searchUrl);
+                this.updateHistoryPage(this.searchUrl);
+                window.axios.get(this.searchUrl).then(({ data }) => {
+                    this.$parent.contents = data;
                 });
             },
-            updateHistoryPage(currentUrl, search){
+            updateHistoryPage(currentUrl){
                let baseUrl = window.location.pathname + '?';
                let params = this.getParams(window.location.href);
-               console.log(params);
+               //console.log(params);
                Object.keys(params).filter(function(key){
                    return key != 'search' && key !='contents' && key != "";
                }).forEach(function(key){
-                   baseUrl = baseUrl += key + '=' + params[key];
+                   baseUrl = baseUrl += key + '=' + params[key] + '&';
                });
-               baseUrl += "&search=" + search;
-               console.log("History url: " + baseUrl);
+               baseUrl += "&search=" + this.search;
+               // console.log("History url: " + baseUrl);
                history.pushState("", document.title, baseUrl);
             },
             getParams(url) {
